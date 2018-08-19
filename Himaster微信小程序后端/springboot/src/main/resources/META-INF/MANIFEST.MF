@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Class-Path: jul-to-slf4j-1.7.25.jar tomcat-embed-el-8.5.23.jar spring-
+ jdbc-4.3.13.RELEASE.jar guava-20.0.jar commons-lang3-3.5.jar tomcat-e
+ mbed-jasper-8.5.23.jar fastjson-1.2.7.jar mybatis-3.4.6.jar spring-we
+ b-4.3.13.RELEASE.jar jackson-core-asl-1.9.12.jar spring-boot-starter-
+ 1.5.9.RELEASE.jar spring-boot-starter-logging-1.5.9.RELEASE.jar sprin
+ g-boot-autoconfigure-1.5.9.RELEASE.jar jackson-mapper-asl-1.9.12.jar 
+ validation-api-1.1.0.Final.jar spring-boot-starter-web-1.5.9.RELEASE.
+ jar tomcat-juli-8.5.23.jar spring-context-4.3.13.RELEASE.jar jcl-over
+ -slf4j-1.7.25.jar mybatis-spring-boot-autoconfigure-1.3.2.jar snakeya
+ ml-1.17.jar javax.servlet-api-3.1.0.jar spring-core-4.3.13.RELEASE.ja
+ r hamcrest-core-1.3.jar java-sdk-4.4.1.jar tomcat-embed-core-8.5.23.j
+ ar hibernate-validator-5.3.6.Final.jar spring-boot-1.5.9.RELEASE.jar 
+ junit-4.12.jar jackson-annotations-2.8.0.jar mysql-connector-java-5.1
+ .34.jar tomcat-annotations-api-8.5.23.jar spring-webmvc-4.3.13.RELEAS
+ E.jar json-20140107.jar spring-tx-4.3.13.RELEASE.jar classmate-1.3.4.
+ jar mybatis-spring-1.3.2.jar slf4j-api-1.7.25.jar spring-boot-starter
+ -jdbc-1.5.9.RELEASE.jar spring-boot-starter-tomcat-1.5.9.RELEASE.jar 
+ mybatis-spring-boot-starter-1.3.2.jar jstl-1.2.jar ecj-3.12.3.jar jac
+ kson-databind-2.8.10.jar spring-beans-4.3.13.RELEASE.jar jackson-core
+ -2.8.10.jar nutz-1.r.65.jar commons-codec-1.10.jar spring-aop-4.3.13.
+ RELEASE.jar jboss-logging-3.3.1.Final.jar spring-boot-devtools-1.5.9.
+ RELEASE.jar logback-core-1.1.11.jar logback-classic-1.1.11.jar tomcat
+ -jdbc-8.5.23.jar log4j-1.2.17.jar tomcat-embed-websocket-8.5.23.jar l
+ og4j-over-slf4j-1.7.25.jar spring-expression-4.3.13.RELEASE.jar
+Main-Class: com.whohim.springboot.Application
+

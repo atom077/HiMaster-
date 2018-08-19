@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.whohim.springboot.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.whohim.springboot.pojo.User">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="openId" property="openid" jdbcType="VARCHAR"/>
+        <result column="nickName" property="nickname" jdbcType="VARCHAR"/>
+        <result column="avatarUrl" property="avatarurl" jdbcType="VARCHAR"/>
+        <result column="stepInfo" property="stepinfo" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="raspberryPie" property="raspberrypie" jdbcType="VARCHAR"/>
+        <result column="token" property="token" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="role" property="role" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, openId, nickName, avatarUrl, stepInfo, password, raspberryPie, token, phone, 
+    role, create_time, update_time
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from himaster_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from himaster_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.whohim.springboot.pojo.User">
+    insert into himaster_user (id, openId, nickName, 
+      avatarUrl, stepInfo, password, 
+      raspberryPie, token, phone, 
+      role, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{avatarurl,jdbcType=VARCHAR}, #{stepinfo,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{raspberrypie,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{role,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.whohim.springboot.pojo.User">
+        insert into himaster_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="openid != null">
+                openId,
+            </if>
+            <if test="nickname != null">
+                nickName,
+            </if>
+            <if test="avatarurl != null">
+                avatarUrl,
+            </if>
+            <if test="stepinfo != null">
+                stepInfo,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="raspberrypie != null">
+                raspberryPie,
+            </if>
+            <if test="token != null">
+                token,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="role != null">
+                role,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="openid != null">
+                #{openid,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="avatarurl != null">
+                #{avatarurl,jdbcType=VARCHAR},
+            </if>
+            <if test="stepinfo != null">
+                #{stepinfo,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="raspberrypie != null">
+                #{raspberrypie,jdbcType=VARCHAR},
+            </if>
+            <if test="token != null">
+                #{token,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="role != null">
+                #{role,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.whohim.springboot.pojo.User">
+        update himaster_user
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="nickname != null">
+                nickName = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="avatarurl != null">
+                avatarUrl = #{avatarurl,jdbcType=VARCHAR},
+            </if>
+            <if test="stepinfo != null">
+                stepInfo = #{stepinfo,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="raspberrypie != null">
+                raspberryPie = #{raspberrypie,jdbcType=VARCHAR},
+            </if>
+            <if test="token != null">
+                token = #{token,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="role != null">
+                role = #{role,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where openId = #{openid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.whohim.springboot.pojo.User">
+    update himaster_user
+    set id = #{id,jdbcType=INTEGER},
+      nickName = #{nickname,jdbcType=VARCHAR},
+      avatarUrl = #{avatarurl,jdbcType=VARCHAR},
+      stepInfo = #{stepinfo,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      raspberryPie = #{raspberrypie,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      role = #{role,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where openId = #{openid,jdbcType=VARCHAR}
+  </update>
+
+    <select id="checkPhone" parameterType="string" resultType="int">
+    select count(1) from himaster_user
+    where phone = #{phone}
+  </select>
+
+
+    <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        FROM himaster_user
+        WHERE phone = #{phone}
+        AND password = #{password}
+    </select>
+
+
+    <select id="selectLoginCaptcha" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        FROM himaster_user
+        WHERE phone = #{phone}
+    </select>
+
+    <update id="updatePasswordByPhone" parameterType="map">
+    UPDATE himaster_user
+    SET password = #{passwordNew},update_time = now()
+    where phone = #{phone}
+  </update>
+
+    <select id="checkPassword" resultType="int" parameterType="map">
+    SELECT COUNT(1) from himaster_user WHERE phone = #{phone} and password = #{password}
+  </select>
+
+    <select id="getCurrentHimasterList" resultMap="BaseResultMap" parameterType="map">
+    SELECT * from himaster_user where raspberryPie = #{raspberryPie}
+  </select>
+
+    <update id="bindRaspberryPie" parameterType="map">
+    UPDATE himaster_user set raspberryPie = #{raspberryPie},token = #{token},role = 1,update_time=NOW()
+    where phone = #{phone}
+  </update>
+
+    <update id="addUserRoot" parameterType="map">
+    UPDATE himaster_user set role = 1,token = #{token},update_time=NOW()
+    where phone = #{phone}
+  </update>
+
+    <select id="selectStepInfo" resultMap="BaseResultMap">
+    SELECT stepInfo ,create_time ,openId,nickName,avatarUrl from himaster_user ORDER BY stepInfo DESC
+  </select>
+
+    <select id="checkStepInfo" resultType="int" parameterType="map">
+    SELECT COUNT(1) from himaster_user WHERE openId = #{openId}
+    </select>
+
+
+    <select id="checkToken" resultType="int" parameterType="map">
+        SELECT COUNT(1) from himaster_user WHERE token = #{token}
+    </select>
+
+</mapper>

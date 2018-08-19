@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.whohim.springboot.dao.ExecuteMapper" >
+  <resultMap id="BaseResultMap" type="com.whohim.springboot.pojo.Execute" >
+    <id column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="actionId" property="actionid" jdbcType="VARCHAR" />
+    <result column="execute_time" property="executeTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    phone, actionId, execute_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from himaster_execute
+    where phone = #{phone,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from himaster_execute
+    where phone = #{phone,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.whohim.springboot.pojo.Execute" >
+    insert into himaster_execute (phone, actionId, execute_time
+      )
+    values (#{phone,jdbcType=VARCHAR}, #{actionid,jdbcType=VARCHAR}, #{executeTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.whohim.springboot.pojo.Execute" >
+    insert into himaster_execute
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="actionid != null" >
+        actionId,
+      </if>
+      <if test="executeTime != null" >
+        execute_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="actionid != null" >
+        #{actionid,jdbcType=VARCHAR},
+      </if>
+      <if test="executeTime != null" >
+        #{executeTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whohim.springboot.pojo.Execute" >
+    update himaster_execute
+    <set >
+      <if test="actionid != null" >
+        actionId = #{actionid,jdbcType=VARCHAR},
+      </if>
+      <if test="executeTime != null" >
+        execute_time = #{executeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where phone = #{phone,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whohim.springboot.pojo.Execute" >
+    update himaster_execute
+    set actionId = #{actionid,jdbcType=VARCHAR},
+      execute_time = #{executeTime,jdbcType=TIMESTAMP}
+    where phone = #{phone,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectDeviceData" resultMap="BaseResultMap" parameterType="com.whohim.springboot.pojo.Execute" >
+   SELECT * FROM himaster_execute WHERE actionId LIKE #{device}
+  </select>
+</mapper>

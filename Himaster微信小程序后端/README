@@ -1,0 +1,22 @@
+﻿README FOR HiMaster 后台
+-----------------------
+
+com.whohim：(后台目录)
+|-- baiduAi(计算机听觉SDK)
+|-- miaodi（短信发送SDK）
+|-- sringboot 
+	|-- commmon (常用的变量名，guava缓存，PegeHeler的配置文件等文件目录）
+	|-- controller (项目的控制层,数据接收，简单逻辑判断目录)
+	|-- dao （数据抽象接口）
+	|-- pojo （实体类）
+	|-- service （业务逻辑目录）
+	|-- util （工具类目录）
+	|-- Application （程序启动接口目录）
+	|-- ReadDataJob（定时任务）
+|-- rescoures 
+	|-- mappers （Mybatis XMl映射文件）
+	|-- META—INF 
+		|-- applicaition.properties （springboot配置文件） 
+		|-- generatorConfig.xml  (mybatis-generator的配置文件)	
+		|-- mybatis-config.xml  (Mybatis的配置文件)
+
