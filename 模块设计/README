@@ -1,0 +1,70 @@
+﻿README FOR HiMaster 
+-----------------------
+
+HiMasterBox：
+|-- driverCL(命令，传输数据，状态，模式等记录文件目录)
+|-- himasterlearn（无监督机器学习demo目录）
+	|--test.py (机器学习demo)
+	|--train.py (训练文件)
+|-- libs（库文件目录）
+	|-- Raspberry 
+	|-- x64
+	|-- x86
+|-- shell（脚本文件目录）
+	|-- init.sh（初始化脚本）
+	|-- makefile.sh(编译脚本)
+	|-- Mode.sh(模式选择脚本)
+|-- snowboy（离线唤醒snowboy SDK软件包）
+	|-- ...
+|-- master.c（HiMasterBox主程序C）
+|-- module.h（功能模块头文件）
+|-- config.h （功能模块配置文件）
+|-- mix.py （语音模块）
+|-- rebs.txt （机器人要说的话）
+|-- iat.txt （机器人识别到的文字）
+|-- usepython.h (python与C混合编程函数头文件)
+|-- master  （程序可执行文件）
+
+
+himasterface：
+|-- dataSet （识别到的人脸素材目录）
+|-- driver （设备驱动文件与记录文件目录）
+	|--drCL.txt （命令记录文件）
+	|-- drDT.txt  (数据记录文件)
+	|-- Pikey.py （密码键盘驱动文件）
+	|-- Piled.py （补光灯驱动文件）
+	|-- Pilight.py （感光模块驱动文件）
+|-- trianner （人脸训练模型目录）
+|-- user  （人脸对应的用户ID目录）
+|-- createface.py (人脸识别与训练模型程序)
+|-- facecontrast.py （人脸对比程序）
+|-- recognizer.py （人脸识别程序）
+|-- recwithapi.py (识别与开门主程序)
+|-- trainner.py (训练人脸数据模型)
+
+
+智能数据监控模块：
+|-- projT （工程文件目录）
+	|-- DRIVER （各个模块程序文件）
+	|-- UCOSII （微处理系统 ） 
+	|-- USER 
+		|-- main.c (主程序文件)	
+		|-- projT.uvprojx （工程文件）	 
+	
+智能门锁模块：
+|-- projT （工程文件目录）
+	|-- DRIVER （各个模块程序文件）
+	|-- UCOSII （微处理系统 ） 
+	|-- USER 
+		|-- main.c (主程序文件)	
+		|-- projT.uvprojx （工程文件）	 
+
+智能插座模块：
+|-- projT （工程文件目录）
+	|-- DRIVER （各个模块程序文件） 
+	|-- USER 
+		|-- main.c (主程序文件)	
+		|-- projT.uvprojx （工程文件）	 
+
+
+
