@@ -1,0 +1,42 @@
+/* pages/control/socket.wxss */
+.total{
+  text-align: center;
+  color: #718093;
+  margin: 20px;
+}
+image{
+  width: 70px;
+  height: 70px;
+  border: 1px solid #f5f6fa;
+}
+.container{
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.inline{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.timeout{
+  margin-top: 40px;
+}
+.picker{
+  width: 78%;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  color: rgb(66, 66, 66);
+  border: 2px solid #f5f6fa;
+  font-size: 13pt;
+}
+.confirm-btn{
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 30px;
+  background-color: #718093;
+  color: white;
+}

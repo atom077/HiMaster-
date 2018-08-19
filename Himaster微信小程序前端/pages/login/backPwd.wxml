@@ -1,0 +1,33 @@
+<!--login.wxml-->
+<view class="container">
+  <view class="remind-box" wx:if="{{remind}}">
+    <image class="remind-img" src="/images/index/loading.gif"></image>
+    <text class="remind-text">{{remind}}</text>
+  </view>
+  <block wx:else>
+    <view class='title'>Hi Master</view>
+    <view class="content">
+      <view class="hd" style="transform:rotateZ({{angle}}deg);">
+        <image class="logo" src="/images/more/hi_logo.png"></image>
+        <image class="wave" src="/images/more/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="/images/more/wave.png" mode="aspectFill"></image>
+      </view>
+      <view class="bd">
+        <form class="login-form">
+          <view class="input-group {{userid_focus ? 'active' : ''}}">
+            <text class="input-label">手机号</text>
+            <input type="number" bindinput='phoneInput' cursor-spacing="30" id="userid" maxlength="11" placeholder="请输入你的手机号码"/>
+          </view>
+          <view class="input-group {{passwd_focus ? 'active' : ''}}" hidden='{{msgHide}}'>
+            <text class="input-label">验证码</text>
+            <input bindinput='msgCodeInput' cursor-spacing="30" placeholder="请输入手机验证码" bindinput="msgCodeInput" bindfocus="inputFocus" bindblur="inputBlur" />
+            <button class='auth-btn' bindtap='sendMsg' disabled='{{disabled}}'>{{time}}</button>
+          </view>
+        </form>
+        <view>
+          <button class='confirm-btn' bindtap='confirmBtnClick'>找回密码</button>
+        </view>
+      </view> 
+    </view>
+  </block>
+</view>

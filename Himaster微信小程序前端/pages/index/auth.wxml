@@ -1,0 +1,17 @@
+<!--pages/index/auth.wxml-->
+<view class="container">
+  <block>
+    <view class='title'>hi~Master</view>
+    <view class="content">
+      <view class="hd" style="transform:rotateZ({{angle}}deg);">
+        <image class="logo" src='../../images/more/hi_logo.png'></image>
+        <image class="wave" src="/images/more/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="/images/more/wave.png" mode="aspectFill"></image>
+      </view>
+    </view>
+  </block>
+</view>
+<view class='auth-content'>
+  <text>获取您的公开信息(头像、昵称)</text>
+  <button class='auth-btn' open-type='getUserInfo' bindgetuserinfo='onGotUserInfo'>点击授权</button>
+</view>

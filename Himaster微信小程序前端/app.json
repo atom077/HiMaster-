@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/setPwd",
+    "pages/control/socket",
+    "pages/bar/weather",
+    "pages/mine/bind",
+    "pages/chat/chat",
+    "pages/login/login",
+    "pages/bar/step",
+    "pages/index/auth",
+    "pages/AI_face/AI_face",
+    "pages/mine/mine",
+    "pages/control/control",
+    "pages/login/backPwd",
+    "pages/AI_face/input_img",
+    "pages/register/register"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#F7F7FA",
+    "navigationBarBackgroundColor": "#718093",
+    "navigationBarTitleText": "我的管家",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar":{
+    "color": "#bdc3c7",
+    "borderStyle": "black",
+    "selectedColor": "#2980b9",
+    "list":[
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon/index.png",
+        "selectedIconPath": "images/icon/indexed.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/control/control",
+        "iconPath": "images/icon/menu.png",
+        "selectedIconPath": "images/icon/menued.png",
+        "text": "菜单"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/icon/mine.png",
+        "selectedIconPath": "images/icon/mined.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

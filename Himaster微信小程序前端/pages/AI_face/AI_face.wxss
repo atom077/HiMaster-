@@ -1,0 +1,7 @@
+.photo-btn{
+  background: #718093;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
+  color: white;
+}

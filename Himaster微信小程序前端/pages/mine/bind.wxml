@@ -1,0 +1,34 @@
+<!--pages/mine/bind.wxml-->
+<view class="container">
+  <block>
+    <view class='title'>hi~Master</view>
+    <view class="content">
+      <view class="hd" style="transform:rotateZ({{angle}}deg);">
+        <image class="logo" src='../../images/more/hi_logo.png'></image>
+        <image class="wave" src="/images/more/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="/images/more/wave.png" mode="aspectFill"></image>
+      </view>
+    </view>
+  </block>
+</view>
+<view>
+  <form class="login-form">
+    <view class='input-group'> 
+      <text class="input-label">用户名</text>
+      <input type="number" bindinput='phoneInput' maxlength='11' cursor-spacing="30"  placeholder=" 请输入您的手机号"/>
+    </view>
+
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <view class="picker">
+        设备类型：{{array[index]}}
+      </view>
+    </picker>
+
+    <view class='input-group'> 
+      <text class="input-label">设备号</text>
+      <input type="number" bindinput='idInput' cursor-spacing="30"  placeholder=" 请输入要绑定的设备号" value='{{machineID}}'/>
+    </view>
+  </form>
+  <button bindtap='scanCode' class='scan-btn'>扫码添加</button>
+  <button class='confirm-btn' bindtap='confirm'>绑定</button>
+</view>

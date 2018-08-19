@@ -1,0 +1,33 @@
+### 小程序目录结构
+- ec-canvas 导入ECharts库
+- images  图片目录
+    - chat  嘿聊
+    - icon  关于icon
+    - more  关于logo
+    - socket  关于插座  
+- pages 页面目录
+    - AI_face  
+    - AI_face 人脸识别
+    - input_img 人脸录入
+    - bar
+        - step 步数统计折线表
+        - weather 天气预报折线表
+    - chat 嘿聊
+    - control 
+        - control 菜单-控制中心
+        - socket 菜单-智能插座
+    - index 
+        - auth 微信授权
+        - index 首页
+    - login 
+        - backPwd 找回密码
+        - login 登录
+        - setPwd 重设密码
+    - mine
+        - bind 设备绑定
+        - mine 个人中心
+    - register 注册
+- app.js 小程序逻辑
+- app.json 小程序全局配置
+- app.wxss 小程序全局样式表
+- project.config,json  项目配置文件

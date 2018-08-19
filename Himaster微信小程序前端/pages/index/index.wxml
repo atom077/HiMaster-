@@ -1,0 +1,72 @@
+<view class='data-container'>
+  <button class='data-block ripple' bindtap='weather_forecast'>
+    <view>{{temperature}}</view>
+    <view>{{weather}}</view>
+  </button>
+
+  <button class='data-block ripple'>
+    <view>{{HM}}</view>
+    <view>相对湿度</view>
+  </button>
+
+  <button class='data-block ripple'>
+    <view>{{TM}}</view>
+    <view>室内温度</view>
+  </button>
+  
+  <button class='data-block ripple'>
+    <view>{{LIT}}</view>
+    <view>光照强度</view>
+  </button>
+  <!-- <view class='data-container-line'>
+    <view class='data-block ripple'>
+      <view>35℃</view>
+      <view>温度</view>
+    </view>
+    <view class='data-block ripple'>
+      <view>35℃</view>
+      <view>温度</view>
+    </view>
+  </view>
+  <view class='data-container-line'>
+    <view class='data-block ripple'>
+      <view>35℃</view>
+      <view>温度</view>
+    </view>
+    <view class='data-block ripple'>
+      <view>35℃</view>
+      <view>温度</view>
+    </view>
+  </view> -->
+</view>
+
+<view class='dateChange'>
+  <view bindtap='forward' hover-class='active' style='pointer-events:{{forPoint}};'><image src='../../images/icon/return.png'></image></view>
+  <view style='margin-left:5px;margin-right:5px;'>{{currentDate}}</view>
+  <view bindtap='backward' hover-class='active' style='pointer-events:{{backPoint}};'><image src='../../images/icon/enter.png'></image></view>
+</view>
+<view class='stepInfo'>
+  <view class='user-step ripple1' bindtap='stepView'>
+    <view class='ava'>
+      <image src='{{userInfo.avatarUrl}}'></image>
+      <view class='nick'>
+        {{userInfo.nickName}}
+      </view>
+    </view>
+    <view class='step' style='color:#f0932b;'>{{currentStep}} 步</view>
+  </view>
+
+  <view class='hr'></view>
+
+  <view class='user-step' wx:for="{{userStepInfo}}" wx:key="*this">
+    <view class='ava'>
+      <view>
+        <image src='{{item.avatarurl}}'></image>
+      </view>
+      <view class='nick'>
+        {{item.nickname}}
+      </view>  
+    </view>
+    <view class='step'>{{item.stepinfo}} 步</view>
+  </view>
+</view>

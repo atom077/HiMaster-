@@ -1,0 +1,30 @@
+<!--pages/control/socket.wxml-->
+<view class='total'>添加设备</view>
+<view class='container'>
+  <view class='inline'>
+    <image src='../../images/socket/light.png'></image>
+    <image src='../../images/socket/TV.png'></image>
+    <image src='../../images/socket/air.png'></image>
+  </view>
+  <view class='inline'>
+    <image src='../../images/socket/clean.png'></image>
+    <image src='../../images/socket/wind.png'></image>
+    <image src='../../images/socket/water.png'></image>
+  </view>
+</view>
+<view class='timeout'>
+  <view class='total'>定时设置</view>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      操作类型: {{array[index]}}
+    </view>
+  </picker>
+  <picker mode="time" value="{{time}}" start="{{hour}}:{{minutes}}" bindchange="bindTimeChange">
+    <view class="picker">
+      选择时间: {{time}}
+    </view>
+  </picker>
+</view>
+<view>
+  <button class='confirm-btn' bindtap='confirm'>确认设置</button>
+</view>

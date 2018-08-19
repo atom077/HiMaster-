@@ -1,0 +1,12 @@
+<!--pages/bar/weather.wxml-->
+<view class="container">
+  <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+  <view  class='weatherInfo'>
+    <view class='total'>未来七天天气预报</view>
+    <view class='weather-line' wx:for="{{weatherInfo}}" wx:key="*this">
+      <text>{{item.week}}</text>
+      <text>{{item.weather}}</text>
+      <text>{{item.temperature}}</text>
+    </view>
+  </view>
+</view>

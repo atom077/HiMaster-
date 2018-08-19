@@ -1,0 +1,70 @@
+<!--pages/personal/personal.wxml-->
+<view class="container">
+  <block>
+    <view class='title'>hi~{{nickName}}</view>
+    <view class="content">
+      <view class="hd" style="transform:rotateZ({{angle}}deg);">
+        <image class="logo" src='{{avatarUrl}}'></image>
+        <image class="wave" src="/images/more/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="/images/more/wave.png" mode="aspectFill"></image>
+      </view>
+
+      <view class='menu-line' bindtap='authUserInfo'>
+        <view class='menu-name'>
+          <image src='../../images/icon/userInfo.png'></image>
+          <view>微信授权</view>
+        </view>
+        <image src='../../images/icon/enter.png'></image>
+      </view>
+
+      <view class='menu-line' bindtap='login'>
+        <view class='menu-name'>
+          <image src='../../images/more/hi_logo.png'></image>
+        <view>用户登录</view>
+        </view>
+        <image src='../../images/icon/enter.png'></image>
+      </view>
+
+      <view class='menu-line' bindtap='mineStep'>
+        <view class='menu-name'>
+          <image src='../../images/icon/step.png'></image>
+          <view>我的步数</view>
+        </view>
+        <image src='../../images/icon/enter.png'></image>
+      </view>
+
+      <view class='menu-line' bindtap='bindMachine'>
+        <view class='menu-name'>
+          <image src='../../images/icon/bind.png'></image>
+          <view>绑定设备</view>
+        </view>
+        <image src='../../images/icon/enter.png'></image>
+      </view>
+
+      <view class='menu-line' bindtap='inputFace'>
+        <view class='menu-name'>
+          <image src='../../images/icon/input.png'></image>
+        <view>人脸录入</view>
+        </view>
+        <image src='../../images/icon/enter.png'></image>
+      </view>
+
+
+      <view class='menu-line' bindtap='home_record'>
+        <view class='menu-name'>
+          <image src='../../images/icon/gohome.png'></image>
+        <view>翻屋记录</view>
+        </view>
+        <image src='../../images/icon/enter.png'></image>
+      </view>
+
+      <view class='menu-line' bindtap='about_us'>
+        <view class='menu-name'>
+          <image src='../../images/icon/about.png'></image>
+        <view>关于我们</view>
+        </view>
+        <image src='../../images/icon/enter.png'></image>
+      </view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,45 @@
+<!--index.wxml-->
+<scroll-view scroll-y style="height: 1050rpx;" scroll-into-view='{{toview}}'>
+  <view class='text-container'>
+    <image src='../../images/chat/11.jpg' style='width'></image>
+    <view class='hei-chat-text'>
+      <view>hi~{{nickName}},我有什么可以帮您？</view>
+      <viem class='current-time'>{{dateTime}}</viem>
+    </view>
+  </view>
+
+  <!-- 聊天消息渲染模块 -->
+  <block wx:for="{{tempData}}" wx:key="*this">
+    <view class='user-chat-container' wx:if="{{item.id == '1'}}">
+      <view class='user-chat-text' id='{{item.toview}}'>
+        <text>{{item.msg}}</text>
+        <text class='current-time'>{{item.dateTime}}</text> 
+      </view>
+      <image src='{{avatarUrl}}'></image> 
+    </view>
+    <view class='text-container' wx:if="{{item.id == '2'}}">
+      <image src='../../images/chat/11.jpg' mode="scaleToFill"></image>
+      <view class='hei-chat-text' id='{{item.toview}}'>
+        <text>{{item.msg}}</text>
+        <text class='current-time'>{{item.dateTime}}</text>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+
+<!-- 按钮 -->
+<view class='btn-group'>
+  <view hidden='{{input_hidden}}' bindtap='change_show'>
+    <image src='../../images/chat/record.png'></image>
+  </view>
+  <view hidden='{{voice_hidden}}' bindtap='change_show'>
+    <image src='../../images/chat/stop.png'></image>
+  </view>
+  <view class='text-input' hidden='{{input_hidden}}'>
+    <input placeholder='请输入' bindinput='text_input' cursor-spacing="20" value='{{inputValue}}'></input>
+  </view>
+  <view hidden='{{voice_hidden}}' class='voice-btn'>
+    <button bindlongtap='voice_longtap' bindtap='voice_tap'>语音识别</button>
+  </view>
+  <button class='send-btn' bindtap='send_btn'>发送</button>
+</view>

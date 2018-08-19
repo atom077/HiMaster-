@@ -1,0 +1,94 @@
+.text-container{
+  display: flex;
+  margin-top: 20rpx;
+  width: 88%;
+  margin-right: 12%;
+}
+.user-chat-container image{
+  width: 11%;
+  height: 80rpx;
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+  /* border-radius: 25px;  */
+}
+.text-container image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+}
+.hei-chat-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f1f2f6;
+  font-size: 30rpx;
+  width: 80%;
+  float: right;
+  padding: 6rpx 10rpx;
+}
+.current-time{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 22rpx;
+  color: #afafaf;
+}
+.user-chat-container{
+  display: flex;
+  justify-content: flex-end;
+  width: 88%;
+  margin-left: 12%;
+  margin-top: 10rpx;
+}
+.user-chat-text{
+  display: flex;
+  background-color: #718093;
+  font-size: 30rpx;
+  color: white;
+  /* width: 90%; */
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6rpx 10rpx;
+  border-radius: 7rpx; 
+}
+.btn-group{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30rpx; 
+  margin-bottom: 50rpx;
+}
+.btn-group image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+}
+.voice-btn{
+ width: 60%; 
+ margin-left: 10rpx;
+}
+.voice-btn button{
+  font-size: 28rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.send-btn{
+  width: 20%;
+  height: 80rpx;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  background-color: #718093;
+  color: white;
+}
+.text-input{
+  width: 60%;
+  margin-left: 10rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  border: 1rpx solid #afafaf;
+  border-radius: 7rpx;
+}
+input{
+  padding: 10rpx 10rpx;
+}

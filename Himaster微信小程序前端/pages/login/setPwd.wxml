@@ -1,0 +1,33 @@
+<!--login.wxml-->
+<view class="container">
+  <view class="remind-box" wx:if="{{remind}}">
+    <image class="remind-img" src="/images/index/loading.gif"></image>
+    <text class="remind-text">{{remind}}</text>
+  </view>
+  <block wx:else>
+    <!-- <image class="title" src="/images/more/title.png"></image> -->
+    <view class='title'>Hi Master</view>
+    <view class="content">
+      <view class="hd" style="transform:rotateZ({{angle}}deg);">
+        <image class="logo" src="/images/more/hi_logo.png"></image>
+        <image class="wave" src="/images/more/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="/images/more/wave.png" mode="aspectFill"></image>
+      </view>
+      <view class="bd">
+        <form class="login-form">
+          <view class="input-group {{passwd_focus ? 'active' : ''}}">
+            <text class="input-label">密码</text>
+            <input password="true" bindinput='passwdInput' cursor-spacing="30" placeholder="请输入密码" bindfocus="inputFocus" bindblur="inputBlur" />
+          </view>
+          <view class="input-group {{passwd_focus ? 'active' : ''}}">
+            <text class="input-label">密码</text>
+            <input password="true" bindinput='rePasswdInput' cursor-spacing="30" placeholder="请确认密码" bindfocus="inputFocus" bindblur="inputBlur" />
+          </view>
+        </form>
+        <view>
+          <button class='confirm-btn' bindtap='confirmBtnClick'>找回密码</button>
+        </view>
+      </view> 
+    </view>
+  </block>
+</view>

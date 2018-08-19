@@ -1,0 +1,41 @@
+<!--pages/personal/personal.wxml-->
+<view class="container">
+  <block>
+    <!-- <image class="title" src="/images/more/title.png"></image> -->
+    <!-- <view class='title'>Hi Master</view> -->
+    <view class='title'>hi~{{nickName}}</view>
+    <view class="content">
+      <view class="hd" style="transform:rotateZ({{angle}}deg);">
+        <image class="logo" src='{{avatarUrl}}'></image>
+        <image class="wave" src="/images/more/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="/images/more/wave.png" mode="aspectFill"></image>
+      </view>
+    </view>
+  </block>
+</view>
+<view class='menu-block'>
+  <view class='menu-line'>
+    <view class='control-menu' bindtap='open_door'>
+      <image class='menu-icon' src='../../images/icon/door.png'></image>
+      <view class='menu-name'>开门</view>
+    </view>
+    <view class='control-menu' bindtap='open_light'>
+      <image class='menu-icon' src='../../images/icon/light.png'></image>
+      <view class='menu-name'>
+        <text hidden='{{on_hidden}}'>开灯</text><text hidden='{{off_hidden}}'>关灯</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class='menu-line'>
+    <view class='control-menu' bindtap='AI_socket'>
+      <image class='menu-icon' src='../../images/icon/socket.png'></image>
+      <view class='menu-name'>智能插座</view>
+    </view>
+    <view class='control-menu' bindtap='hi_chat'>
+      <image class='menu-icon' src='../../images/icon/chat.png'></image>
+      <view class='menu-name'>嘿聊</view>
+    </view>
+  </view>
+  
+</view>

@@ -1,0 +1,33 @@
+/* pages/bar/weather.wxss */
+ec-canvas {
+  width: 100%;
+  height: 80%;
+}
+.container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+  box-sizing: border-box;
+} 
+.total{
+  font-size: 36rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+.weather-line{
+  display: flex;
+  height: 100rpx;
+  line-height: 100rpx;
+  justify-content: space-between;
+  width: 90%;
+  font-size: 30rpx;
+  margin: 0 auto;
+  border-top: 1rpx solid #bdc3c7;
+}
