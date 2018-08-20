@@ -31,7 +31,7 @@ public interface UserMapper {
 
     List<User> getCurrentHimasterList(String raspberrypie);
 
-    int bindRaspberryPie(@Param("phone") String phone, @Param("raspberryPie") String raspberryPie,@Param("token")String token);
+    int bindRaspberryPie(@Param("phone") String phone, @Param("raspberryPie") String raspberryPie, @Param("token") String token);
 
     int addUserRoot(@Param("phone") String phone, @Param("raspberryPie") String raspberryPie, @Param("token") String token);
 

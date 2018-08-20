@@ -33,13 +33,13 @@ public interface IUserService {
 
     ServerResponse<PageInfo> getCurrentHimasterList(String raspberrypie, int pageNum, int pageSize);
 
-    ServerResponse <User>addUserRoot(String phone,String rasperrypie);
+    ServerResponse<User> addUserRoot(String phone, String rasperrypie);
 
     ServerResponse<String> bindRaspberryPie(String phone, String raspberrypie);
 
     ServerResponse<List<User>> getUserStep();
 
-    ServerResponse <String> updateUserStepInfo(User user);
+    ServerResponse<String> updateUserStepInfo(User user);
 
     JSONObject getSessionKeyOropenId(String code);
 

@@ -1,7 +1,6 @@
 package com.whohim.baiduAi;
 
 
-
 import com.whohim.springboot.util.ConnUtil;
 
 import java.io.File;
@@ -22,9 +21,10 @@ public class TtsMain {
     }
 
 
-    public static String speak (String keyAction, int mark)throws IOException,DemoException{
-        return   (new TtsMain()).run(keyAction,mark);
+    public static String speak(String keyAction, int mark) throws IOException, DemoException {
+        return (new TtsMain()).run(keyAction, mark);
     }
+
     //  填写网页上申请的appkey 如 $apiKey="g8eBUMSokVB1BHGmgxxxxxx"
     private final String appKey = "e7TGIdGOWE65PTbAwschxmc1";
 
@@ -34,7 +34,7 @@ public class TtsMain {
 
     // text 的内容为"欢迎使用百度语音合成"的urlencode,utf-8 编码
     // 可以百度搜索"urlencode"
-    private  String text = "欢迎使用Himaster！";
+    private String text = "欢迎使用Himaster！";
 
     // 发音人选择, 0为普通女声，1为普通男生，3为情感合成-度逍遥，4为情感合成-度丫丫，默认为普通女声
     private final int per = 4;
@@ -52,17 +52,21 @@ public class TtsMain {
 
     private String cuid = "1234567JAVA";
 
-    private String run(String keyAction,int mark) throws IOException, DemoException {
+    private String run(String keyAction, int mark) throws IOException, DemoException {
         TokenHolder holder = new TokenHolder(appKey, secretKey, TokenHolder.ASR_SCOPE);
         holder.refresh();
         String token = holder.getToken();
-        System.out.println("mark:"+mark);
+        System.out.println("mark:" + mark);
         if (mark == 1) {//标识为0时，正常合成语音
-            text = "主人，已" + keyAction + "!";
-        }else {
+            text = "主人，开关" + keyAction + "成功!";
+        }
+        if (mark == 2) {
+            text = "你在说什么呢?";
+        }
+        if (mark == 3) {
             text = keyAction;
         }
-        System.out.println("合成的text:"+text);
+        System.out.println("合成的text:" + text);
         // 此处2次urlencode， 确保特殊字符被正确编码
         String params = "tex=" + ConnUtil.urlEncode(ConnUtil.urlEncode(text));
         params += "&per=" + per;

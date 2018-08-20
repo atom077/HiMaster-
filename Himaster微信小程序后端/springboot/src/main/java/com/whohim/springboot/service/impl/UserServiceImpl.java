@@ -7,7 +7,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 
-
 import com.whohim.springboot.util.*;
 import com.whohim.miaodi.IndustrySMS;
 import com.whohim.springboot.common.Const;
@@ -16,7 +15,6 @@ import com.whohim.springboot.common.ServerResponse;
 import com.whohim.springboot.dao.UserMapper;
 import com.whohim.springboot.pojo.User;
 import com.whohim.springboot.service.IUserService;
-
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +30,6 @@ import java.util.*;
 
 import static com.whohim.springboot.common.Const.CHARSET;
 import static com.whohim.springboot.util.IoUtil.PrintStream;
-
 
 
 @Service("iUserService")
@@ -59,7 +56,7 @@ public class UserServiceImpl implements IUserService {
         if (user == null) {
             return ServerResponse.createByErrorMessage("密码错误");
         }
-        resetToken(user,phone);
+        resetToken(user, phone);
         user.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
         user.setPhone(org.apache.commons.lang3.StringUtils.EMPTY);
         user.setRaspberrypie(org.apache.commons.lang3.StringUtils.EMPTY);
@@ -89,11 +86,11 @@ public class UserServiceImpl implements IUserService {
         if (captcha.equals(IoUtil.BufferedReader(destPath))) {
             //如果输入的验证码与记录的相等，则
             User user = userMapper.selectLoginCaptcha(phone);
-            resetToken(user,phone);
+            resetToken(user, phone);
             user.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
             user.setPhone(org.apache.commons.lang3.StringUtils.EMPTY);
             user.setRaspberrypie(org.apache.commons.lang3.StringUtils.EMPTY);
-            return ServerResponse.createBySuccess("登录成功!",user);
+            return ServerResponse.createBySuccess("登录成功!", user);
         }
         return ServerResponse.createByErrorMessage("验证码错误!");
     }
@@ -221,10 +218,10 @@ public class UserServiceImpl implements IUserService {
     public ServerResponse<String> bindRaspberryPie(String phone, String raspberryPie) {
         String uuid = UUID.randomUUID().toString();//动态生成uuid
         String random[] = uuid.split("-");
-        String token = DesUtil.encrypt(phone + "&" + raspberryPie+"&"+random[0], CHARSET, PropertiesUtil.getProperty("desKey"));
-        int updateCount = userMapper.bindRaspberryPie(phone,raspberryPie,token);
+        String token = DesUtil.encrypt(phone + "&" + raspberryPie + "&" + random[0], CHARSET, PropertiesUtil.getProperty("desKey"));
+        int updateCount = userMapper.bindRaspberryPie(phone, raspberryPie, token);
         if (updateCount > 0) {
-            return ServerResponse.createBySuccess("绑定成功！",token);
+            return ServerResponse.createBySuccess("绑定成功！", token);
         }
         return ServerResponse.createByErrorMessage("绑定失败,请注册！");
     }
@@ -233,13 +230,13 @@ public class UserServiceImpl implements IUserService {
     public ServerResponse<List<User>> getUserStep() {
         List<User> user = userMapper.selectStepInfo();
         if (user != null) {
-            return ServerResponse.createBySuccess("查询成功！",user);
+            return ServerResponse.createBySuccess("查询成功！", user);
         }
         return ServerResponse.createByErrorMessage("查询步数失败!");
     }
 
     @Override
-    public ServerResponse <String> updateUserStepInfo(User user) {
+    public ServerResponse<String> updateUserStepInfo(User user) {
         user.setOpenid(user.getOpenid());
         user.setStepinfo(user.getStepinfo());
         user.setNickname(user.getNickname());
@@ -247,10 +244,10 @@ public class UserServiceImpl implements IUserService {
         user.setRole(Const.Role.ROLE_CUSTOMER);
         user.setCreateTime(new Date());
         int checkCount = userMapper.checkStepInfo(user.getOpenid());
-        if (checkCount > 0){
+        if (checkCount > 0) {
             userMapper.updateByPrimaryKeySelective(user);
             return ServerResponse.createBySuccessMessage("用户步数更新成功！");
-        }else {
+        } else {
             int insertCount = userMapper.insert(user);
             if (insertCount > 0) {
                 return ServerResponse.createBySuccessMessage("用户步数更新成功！");
@@ -286,25 +283,27 @@ public class UserServiceImpl implements IUserService {
             map.put(AnyUtil.timeStamp2Date(jsonObject.getString("timestamp"), "yyyy-MM-dd"), Integer.parseInt(jsonObject.getString("step")));
         }
         Map<String, Integer> sortMaps = AnyUtil.sort(map);//排序后的Map
-        return ServerResponse.createBySuccess("已取得步数！",sortMaps);
+        return ServerResponse.createBySuccess("已取得步数！", sortMaps);
     }
 
 
     /**
      * 动态更新token
+     *
      * @param user
      * @param phone
      */
-    private void  resetToken(User user,String phone){
+    private void resetToken(User user, String phone) {
         String raspberryPie = ModuleServiceImpl.getReaspberry(user.getToken());
         String uuid = UUID.randomUUID().toString();//动态生成uuid
         String random[] = uuid.split("-");
-        String token = DesUtil.encrypt(phone + "&" + raspberryPie+"&"+random[0], CHARSET, PropertiesUtil.getProperty("desKey"));
+        String token = DesUtil.encrypt(phone + "&" + raspberryPie + "&" + random[0], CHARSET, PropertiesUtil.getProperty("desKey"));
         user.setToken(token);
         int updateToken = userMapper.updateByPrimaryKeySelective(user);
         if (updateToken > 0)
-            System.out.println("token"+"更新成功!");
+            System.out.println("token" + "更新成功!");
     }
+
     /**
      * 判断电话号码是不是先前提交的电话号码
      *
@@ -335,7 +334,7 @@ public class UserServiceImpl implements IUserService {
      * @throws IOException
      */
     private ServerResponse<String> reuseCaptcha(String phone, String suffix) throws IOException {
-        ModuleServiceImpl.delayTime(100,1000);
+        ModuleServiceImpl.delayTime(100, 1000);
         if (phone == null || phone.length() < 11) {
             return ServerResponse.createBySuccessMessage("号码不能为空或者号码长度不对！");
         }
@@ -381,8 +380,6 @@ public class UserServiceImpl implements IUserService {
     }
 
 
-
-
     /**
      * 校验是否是管理员
      *
@@ -399,12 +396,13 @@ public class UserServiceImpl implements IUserService {
 
     /**
      * 检查token是否正确，正确则返回true
+     *
      * @param token
      * @return
      */
-    public boolean checkToken(String token){
+    public boolean checkToken(String token) {
         int resultCount = userMapper.checkToken(token);
-        if (resultCount > 0){
+        if (resultCount > 0) {
             return true;
         }
         return false;

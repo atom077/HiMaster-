@@ -1,4 +1,5 @@
 package com.whohim.springboot.util;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 
@@ -13,6 +14,7 @@ public class DesUtil {
 
     /**
      * 加密
+     *
      * @param srcStr
      * @param charset
      * @param sKey
@@ -44,6 +46,7 @@ class Des {
 
     /**
      * 加密
+     *
      * @param data
      * @param sKey
      * @return
@@ -72,6 +75,7 @@ class Des {
 
     /**
      * 解密
+     *
      * @param src
      * @param sKey
      * @return

@@ -11,7 +11,6 @@ public class IoUtil {
 //    }
 
 
-
     /**
      * 用新的字符串替代指定的字符串
      *
@@ -66,7 +65,6 @@ public class IoUtil {
         }
 
     }
-
 
 
     /**
@@ -132,14 +130,14 @@ public class IoUtil {
         }
     }
 
-    public  static void StringBuffer(String path, String context) throws IOException{
-        File file=new File(path);
-        if(!file.exists())
+    public static void StringBuffer(String path, String context) throws IOException {
+        File file = new File(path);
+        if (!file.exists())
             file.createNewFile();
-        FileOutputStream out=new FileOutputStream(file,true);
-            StringBuffer sb=new StringBuffer();
-            sb.append(context);
-            out.write(sb.toString().getBytes("utf-8"));
+        FileOutputStream out = new FileOutputStream(file, true);
+        StringBuffer sb = new StringBuffer();
+        sb.append(context);
+        out.write(sb.toString().getBytes("utf-8"));
         out.close();
     }
 
@@ -169,6 +167,7 @@ public class IoUtil {
 
     /**
      * 删除整个文件夹
+     *
      * @param path
      */
     public static void deleteAllFilesOfDir(File path) {

@@ -9,6 +9,7 @@ import com.whohim.springboot.service.IImageService;
 
 import com.whohim.springboot.service.IUserService;
 
+import com.whohim.springboot.util.IoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -81,7 +82,7 @@ public class ImageServiceImpl implements IImageService {
             JSONObject jsonObject = JSONObject.parseObject(FaceMatch.getResult(adminImagePath, userImagePath));
             JSONObject jsonObjectResult = jsonObject.getJSONObject("result");
             String errorCode = jsonObject.getString("error_code");
-            if(!errorCode.equals("0")){
+            if (!errorCode.equals("0")) {
                 return ServerResponse.createByErrorMessage("识别失败!");
             }
             float score = jsonObjectResult.getFloat("score");
@@ -89,6 +90,7 @@ public class ImageServiceImpl implements IImageService {
                 count++;
             }
         }
+        IoUtil.deleteFile(userImagePath);
         if (i < 4)
             return ServerResponse.createByErrorCodeMessage(2, "人脸数据不足，请重新录入！");
 

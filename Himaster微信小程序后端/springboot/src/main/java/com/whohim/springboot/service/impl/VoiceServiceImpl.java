@@ -68,10 +68,17 @@ public class VoiceServiceImpl implements IVoiceService {
             String newDestPath = path + uuid + ".pcm";//-------------改转换格式时顺便改这个-----------//
             SdkEntity.getToken();//识别语音
             LastResult = SdkEntity.method1(newDestPath);//-----------测试时替换这个就可以了-----------//
+            IoUtil.deleteFile(newDestPath);//识别之后顺便删除
+            IoUtil.deleteFile(destPath);
         }
         System.out.println(LastResult);
         JSONObject jsonObject = JSONObject.fromObject(LastResult);
         //通过getString("")分别取出里面的信息
+        String errorNumber = jsonObject.getString("err_no");
+        if (!errorNumber.equals("0")) {
+            TtsMain.speak("", 2);
+            return ServerResponse.createByError( "你在说什么呢？","暂未识别语音。");
+        }
         String respResult = jsonObject.getString("result");
         System.out.println("respResult:" + respResult);
         String[] strs = respResult.split("[\"]");
@@ -80,27 +87,23 @@ public class VoiceServiceImpl implements IVoiceService {
         String text = turing(strs[1]);//text是图灵接口回传的回答文本
 
         if (LastResult.contains("开灯")) {
-            TtsMain.speak("开灯", 1);
-            iModuleService.controlLed(token);
-            return ServerResponse.createBySuccess(speakText,"主人，已开灯。");
+            TtsMain.speak("灯", 1);
+            return iModuleService.controlLed(token, speakText);
         }
-        if(LastResult.contains("关灯")){
-            TtsMain.speak("关灯", 1);
-            iModuleService.controlLed(token);
-            return ServerResponse.createBySuccess(speakText,"主人，已关灯。");
-
-        }if(LastResult.contains("开智能插座")) {
-            TtsMain.speak("开智能插座", 1);
-            iModuleService.controlLed(token);
-            return ServerResponse.createBySuccess(speakText,"主人，已开智能插座。");
+        if (LastResult.contains("关灯")) {
+            TtsMain.speak("灯", 1);
+            return iModuleService.controlLed(token, speakText);
         }
-        if(LastResult.contains("关智能插座")) {
-            TtsMain.speak("关智能插座", 1);
-            iModuleService.controlLed(token);
-            return ServerResponse.createBySuccess(speakText,"主人，已关智能插座。");
+        if (LastResult.contains("开智能插座")) {
+            TtsMain.speak("智能插座", 1);
+            return iModuleService.controlLed(token, speakText);
         }
-            TtsMain.speak(text, 0);
-            return ServerResponse.createBySuccess(speakText, text);
+        if (LastResult.contains("关智能插座")) {
+            TtsMain.speak("智能插座", 1);
+            return iModuleService.controlLed(token, speakText);
+        }
+        TtsMain.speak(text, 3);
+        return ServerResponse.createBySuccess(text,speakText);
     }
 
 
@@ -109,7 +112,7 @@ public class VoiceServiceImpl implements IVoiceService {
         if (fileName != null) {
             File directory = new File("..");
             String realPath = directory.getCanonicalPath() + "//springboot//";
-            System.out.println("mp3Path:"+realPath+fileName);
+            System.out.println("mp3Path:" + realPath + fileName);
             File file = new File(realPath, fileName);
             if (file.exists()) {
                 response.setContentType("application/force-download");// 设置强制下载不打开
@@ -128,7 +131,7 @@ public class VoiceServiceImpl implements IVoiceService {
                         i = bis.read(buffer);
                     }
                     System.out.println("小程序已经下载啦~");
-                    IoUtil.deleteFile(realPath+fileName);
+                    IoUtil.deleteFile(realPath + fileName);
                     System.out.println("result.mp3缓存已删除");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -157,8 +160,8 @@ public class VoiceServiceImpl implements IVoiceService {
     @Override
     public ServerResponse chatting(String info) throws IOException, DemoException {
         String text = turing(info);
-        TtsMain.speak(text, 0);
-        return ServerResponse.createBySuccess("",text);
+        TtsMain.speak(text, 3);
+        return ServerResponse.createBySuccess("", text);
     }
 
 
@@ -192,7 +195,7 @@ public class VoiceServiceImpl implements IVoiceService {
         String INFO = URLEncoder.encode(keyword, "utf-8");
         String getURL = "http://www.tuling123.com/openapi/api?key=" + APIKEY
                 + "&info=" + INFO;
-        String sb = HttpUtil.post(getURL,"");
+        String sb = HttpUtil.post(getURL, "");
         JSONObject jsonObject = JSONObject.fromObject(sb.toString());
         //通过getString("")分别取出里面的信息
         String text = jsonObject.getString("text");
@@ -264,11 +267,11 @@ public class VoiceServiceImpl implements IVoiceService {
         boolean flag = true;
         String cmd = "";
         cmd = "sh /product/developer/git-repository/silk/converter.sh " + silk + " pcm";
-        System.out.println("转码到PCM...");
-        return crossDecoderDuring(flag,cmd);
+        System.out.println("silk已转码到PCM...");
+        return crossDecoderDuring(flag, cmd);
     }
 
-    private static boolean   crossDecoderDuring(boolean flag, String cmd){
+    private static boolean crossDecoderDuring(boolean flag, String cmd) {
         try {
             StringBuilder msg = Lang.execOutput(cmd, Encoding.CHARSET_UTF8);
             System.out.println(msg);

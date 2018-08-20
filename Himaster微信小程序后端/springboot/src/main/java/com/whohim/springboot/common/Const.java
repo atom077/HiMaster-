@@ -26,12 +26,8 @@ public class Const {
     public static String sleepPattern = "MD+SP";
     public static String adminImagePath = "//upload//image//admin//";
     public static String userImagePath = "//upload//image//user//";
-    public static String session ="onLine";
+    public static String session = "onLine";
     public static String selectDoorRecord = "CL+M2+DOR+%";
-
-
-
-
 
 
     public interface Role {

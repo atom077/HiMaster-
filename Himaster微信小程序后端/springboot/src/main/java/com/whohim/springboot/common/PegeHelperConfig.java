@@ -10,7 +10,7 @@ import java.util.Properties;
 public class PegeHelperConfig {
     /**
      * 注解@Configuration 表示PageHelperConfig 这个类是用来做配置的。
-     注解@Bean 表示启动PageHelper这个拦截器。
+     * 注解@Bean 表示启动PageHelper这个拦截器。
      */
     @Configuration
     public class PageHelperConfig {

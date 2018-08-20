@@ -10,11 +10,11 @@ import org.quartz.JobExecutionException;
 import java.io.File;
 import java.io.IOException;
 
-public class ReadDataJob implements Job{
+public class ReadDataJob implements Job {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        String dtrs[],strs[];
+        String dtrs[], strs[];
         JobDetail detail = jobExecutionContext.getJobDetail();
         String reaspberry = detail.getJobDataMap().getString("reaspberry");
 //        String dtPath = "C:\\Users\\Administrator\\Desktop\\"+reaspberry+"\\DT.txt";
@@ -30,7 +30,7 @@ public class ReadDataJob implements Job{
         if (!dir.exists()) {
             dir.mkdir();
         }
-        if ((dtFile.isFile() == false) || (dtFile.exists() == false) || (stFile.isFile() == false) || (stFile.exists() == false)){
+        if ((dtFile.isFile() == false) || (dtFile.exists() == false) || (stFile.isFile() == false) || (stFile.exists() == false)) {
             System.out.println("文件不存在!正在创建！");
             try {
                 dtFile.createNewFile();

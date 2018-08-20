@@ -14,23 +14,23 @@ public class FileUtil {
         File file = new File(filePath);
         if (!file.exists()) {
             throw new FileNotFoundException(filePath);
-        } 
+        }
 
         if (file.length() > 1024 * 1024 * 1024) {
             throw new IOException("File is too large");
-        } 
+        }
 
         StringBuilder sb = new StringBuilder((int) (file.length()));
         // 创建字节输入流  
-        FileInputStream fis = new FileInputStream(filePath);  
+        FileInputStream fis = new FileInputStream(filePath);
         // 创建一个长度为10240的Buffer
-        byte[] bbuf = new byte[10240];  
+        byte[] bbuf = new byte[10240];
         // 用于保存实际读取的字节数  
-        int hasRead = 0;  
-        while ( (hasRead = fis.read(bbuf)) > 0 ) {  
-            sb.append(new String(bbuf, 0, hasRead));  
-        }  
-        fis.close();  
+        int hasRead = 0;
+        while ((hasRead = fis.read(bbuf)) > 0) {
+            sb.append(new String(bbuf, 0, hasRead));
+        }
+        fis.close();
         return sb.toString();
     }
 

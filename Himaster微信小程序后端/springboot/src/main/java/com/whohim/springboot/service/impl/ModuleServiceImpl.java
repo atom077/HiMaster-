@@ -2,6 +2,8 @@ package com.whohim.springboot.service.impl;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.whohim.baiduAi.DemoException;
+import com.whohim.baiduAi.TtsMain;
 import com.whohim.springboot.common.Const;
 import com.whohim.springboot.common.DataCache;
 import com.whohim.springboot.common.ResponseCode;
@@ -47,19 +49,19 @@ public class ModuleServiceImpl implements IModuleService {
     private static String[] strs;
 
 
-    public ServerResponse controlLed(String token) throws IOException {
-        return controlModle(token, ledOnMark, ledOffMark, ledOnContext, ledOffContext, "灯");
+    public ServerResponse controlLed(String token, String speakText) throws IOException, DemoException {
+        return controlModle(token, speakText, ledOnMark, ledOffMark, ledOnContext, ledOffContext, "灯");
     }
 
     @Override
-    public ServerResponse controlDoor(String token) throws IOException {
-        return controlModle(token, doorOnMark, doorOffMark, doorOnContent, doorOffContent, "门");
+    public ServerResponse controlDoor(String token, String speakText) throws IOException, DemoException {
+        return controlModle(token, speakText, doorOnMark, doorOffMark, doorOnContent, doorOffContent, "门");
     }
 
 
     @Override
-    public ServerResponse controlsmartSocket(String token) throws IOException {
-        return controlModle(token, smartSocketOnMark, smartSocketOffMark, smartSocketOnContent, smartSocketOffContent, "智能插座");
+    public ServerResponse controlsmartSocket(String token, String speakText) throws IOException, DemoException {
+        return controlModle(token, speakText, smartSocketOnMark, smartSocketOffMark, smartSocketOnContent, smartSocketOffContent, "智能插座");
     }
 
     @Override
@@ -186,12 +188,17 @@ public class ModuleServiceImpl implements IModuleService {
      * @return
      * @throws IOException
      */
-    private ServerResponse<Object> controlModle(String token, String moduleOnMark, String moduleOffMark, String moduleOnContent, String moduleOffContent, String moduleName) throws IOException {
+    private ServerResponse<Object> controlModle(String token, String speakText, String moduleOnMark, String moduleOffMark, String moduleOnContent, String moduleOffContent, String moduleName) throws IOException, DemoException {
         if (!iUserService.checkToken(token)) {
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_TOKEN.getCode(), "密钥无效！");
+            TtsMain.speak("密钥无效,请绑定设备！", 3);
+            return ServerResponse.createBySuccess("密钥无效，请绑定设备!",speakText);
+        }
+        String phone = getPhone(token);
+        if (DataCache.getKey(phone) == null) {
+            TtsMain.speak("登录已过期,请重新登录！", 3);
+            return ServerResponse.createByError("登录已过期,请重新登录！",speakText);
         }
         String reaspberry = getReaspberry(token);
-        String phone = getPhone(token);
         System.out.println(phone.trim());
         String clPath = "/product/developer/himaster/driverCL/" + reaspberry + "/CL.txt";
         String markPath = "/product/developer/himaster/driverCL/" + reaspberry + "/MARK.txt";
@@ -237,9 +244,9 @@ public class ModuleServiceImpl implements IModuleService {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            return ServerResponse.createByErrorMessage("开关" + moduleName + "失败！");
+            return ServerResponse.createByErrorMessage("主人，开关" + moduleName + "失败！",speakText);
         }
-        return ServerResponse.createBySuccessMessage("开关" + moduleName + "成功！");
+        return ServerResponse.createBySuccessMessage("主人，开关" + moduleName + "成功！",speakText);
     }
 
     public static void delayTime(int a, int b) {
