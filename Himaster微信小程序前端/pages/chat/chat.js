@@ -73,7 +73,7 @@ Page({
             console.log(response)
             tempData.push({
               id: '1',
-              msg: response.msg,
+              msg: response.data,
               dateTime: (util.formatTime(new Date)).split(' ')[1],
               toview: 'last_id' + last_i
             })
@@ -85,7 +85,7 @@ Page({
             var last_i = i++
             tempData.push({
               id: '2',
-              msg: response.data,
+              msg: response.msg,
               dateTime: (util.formatTime(new Date)).split(' ')[1],
               toview: 'last_id' + last_i
             })
@@ -103,8 +103,9 @@ Page({
             wx.downloadFile({
               url: 'https://www.whohim.top/voice/download_audio',
               header: {
-                "content-type": 'multipart/form-data'
+                'content-type': 'application/json'
               },
+              
               success: function (res) {
                 // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
                 if (res.statusCode === 200) {
@@ -149,7 +150,7 @@ Page({
     console.log('录音结束')
     setTimeout(function(res){
       wx.hideLoading()
-    },2000)
+    },1000)
   },
 
    /**
@@ -191,7 +192,7 @@ Page({
         'Content-Type': 'application/json'
       },
       success: function(res){
-        console.log(res.data.data)
+        console.log(res.data)
         var last_i = i++
         tempData.push({
           id: '2',
