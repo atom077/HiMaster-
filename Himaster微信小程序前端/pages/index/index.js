@@ -15,9 +15,9 @@ Page({
     backPoint: '',
     temperature: '',
     weather: '天气',
-    HM: ' ',   // 湿度
-    LIT: ' ',  // 光照
-    TM: ' '    // 温度
+    HM: '',   // 湿度
+    LIT: '',  // 光照
+    TM: ''    // 温度
   },
 
   /**

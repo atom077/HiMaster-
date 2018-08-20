@@ -31,8 +31,9 @@ Page({
       dateTime: (util.formatTime(new Date)).split(' ')[1]
     })
   },
-
-
+  /**
+   * 语音or文本输入切换
+   */
   change_show: function(res){
     var that = this
     var voice_hidden = that.data.voice_hidden
@@ -43,17 +44,18 @@ Page({
     })
   },
   /**
-   * 监听语音按钮长按
+   * 监听语音按钮触摸开始
    */
-  voice_longtap: function(res){
+  voice_start: function(res){
+    console.log('手指触摸开始')
     wx.showLoading({
-      title: '录音中',
-      mask: true,
+      title: '语音识别中',
+      mask: true
     })
     var that = this
     var token = wx.getStorageSync('token')
     var tempData = that.data.tempData
-    var i = that.data.view_count 
+    var i = that.data.view_count
     wx.startRecord({
       success: function (res) {
         var tempFilePath = res.tempFilePath
@@ -66,8 +68,8 @@ Page({
           name: 'file',
           formData: {
             token: token
-          }, 
-          success: function(res){
+          },
+          success: function (res) {
             var response = JSON.parse(res.data)
             var last_i = i++
             console.log(response)
@@ -94,20 +96,14 @@ Page({
               view_count: last_i,
               toview: 'last_id' + last_i
             })
-            wx.showToast({
-              title: '语音识别中',
-              icon: 'loading',
-              duration: 2000,
-              mask: true
-            })
             wx.downloadFile({
               url: 'https://www.whohim.top/voice/download_audio',
               header: {
                 'content-type': 'application/json'
               },
-              
               success: function (res) {
                 // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+                wx.hideLoading()
                 if (res.statusCode === 200) {
                   const innerAudioContext = wx.createInnerAudioContext()
                   innerAudioContext.autoplay = true
@@ -141,16 +137,15 @@ Page({
       }
     })
   },
-
-   /**
-   * 监听语音按钮点击完成
+  /**
+   * 监听语音按钮触摸结束
    */
-  voice_tap: function(res){
+  voice_end: function(res){
     wx.stopRecord()
-    console.log('录音结束')
-    setTimeout(function(res){
-      wx.hideLoading()
-    },1000)
+    console.log('录音结束','手指触摸结束')
+    // setTimeout(function (res) {
+    //   wx.hideLoading()
+    // }, 1000)
   },
 
    /**

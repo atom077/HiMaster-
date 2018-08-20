@@ -7,8 +7,8 @@
     - socket  关于插座  
 - pages 页面目录
     - AI_face  
-        - AI_face 人脸识别
-        - input_img 人脸录入
+    - AI_face 人脸识别
+    - input_img 人脸录入
     - bar
         - step 步数统计折线表
         - weather 天气预报折线表

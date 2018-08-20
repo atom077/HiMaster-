@@ -39,7 +39,8 @@
     <input placeholder='请输入' bindinput='text_input' cursor-spacing="20" value='{{inputValue}}'></input>
   </view>
   <view hidden='{{voice_hidden}}' class='voice-btn'>
-    <button bindlongtap='voice_longtap' bindtap='voice_tap'>语音识别</button>
+    <!-- <button bindlongtap='voice_longtap' bindtap='voice_tap'>语音识别</button> -->
+    <button bindtouchstart='voice_start' bindtouchend='voice_end'>语音识别</button>
   </view>
   <button class='send-btn' bindtap='send_btn'>发送</button>
 </view>
